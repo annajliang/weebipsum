@@ -62,6 +62,7 @@ const Form = ({ setUserResult }) => {
     <form action="submit" onSubmit={handleSubmit}>
       <input
         type="number"
+        id="numOfParagraphs"
         min="1"
         max="20"
         value={numOfParagraphs}
