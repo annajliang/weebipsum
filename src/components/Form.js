@@ -21,10 +21,13 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
 
   const constructSentence = (arr) => {
     let sentence = "";
+    
     for (let i = 1; i <= 15; i++) {
       sentence += ` ${arr[getRandomIndex(arr)]}`;
     }
-    return `${sentence}.`;
+
+    sentence = capitalizeFirstLetter(sentence);
+    return `${sentence}.`
   };
 
   const handleSubmit = (e) => {
@@ -55,7 +58,7 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
     for (let i = 1; i <= length; i++) {
       paragraph += constructSingleParagraph(paragraphType);
     }
-    return startWith ? 'Omae wa mou shindeiru' + paragraph : paragraph;
+    paragraph = applySentenceCase(paragraph).split(".").join(". ");
   };
 
   console.log("check", startWith);
