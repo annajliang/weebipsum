@@ -17,8 +17,9 @@ const ParagraphInput = ({
         onClick={(e) => {
           getInputData(e, setParagraphType);
         }}
+        required
       />
-      <label for="longParagraph">{textContent}</label>
+      <label htmlFor={idName}>{textContent}</label>
     </>
   );
 };

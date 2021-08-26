@@ -74,7 +74,7 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
           getInputData(e, setNumOfParagraphs);
         }}
       />
-      <label for="numOfParagraphs"> Paragraphs</label>
+      <label htmlFor="numOfParagraphs"> Paragraphs</label>
       <br></br>
 
       <ParagraphInput
