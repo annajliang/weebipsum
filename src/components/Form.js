@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ParagraphInput from "./ParagraphInput";
+import WordChoice from "./WordChoice";
 import cleanWords from "../data/cleanWords"
+import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer"
 import { applySentenceCase, capitalizeFirstLetter } from "../utils/stringFormatters"
 
@@ -97,6 +99,20 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
         numOfSentencesInParagraph="3"
         idName="smallParagraph"
         textContent="Small"
+      />
+
+      <WordChoice
+        idName="cleanWords"
+        setIncludeCleanWords={setIncludeCleanWords}
+        setIncludeDirtyWords={setIncludeDirtyWords}
+        textContent="Keep it PG!"
+      />
+
+      <WordChoice
+        idName="dirtyWords"
+        setIncludeCleanWords={setIncludeCleanWords}
+        setIncludeDirtyWords={setIncludeDirtyWords}
+        textContent="Sprinkle in some naughty words!"
       />
 
       <input type="checkbox" id="startWith" name="startWith" onChange={handleCheck} />
