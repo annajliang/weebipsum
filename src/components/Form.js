@@ -12,11 +12,8 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
   const [numOfParagraphs, setNumOfParagraphs] = useState(0);
   const [paragraphType, setParagraphType] = useState("");
   const [startWith, setStartWith] = useState(false);
-  const [test, setTest] = useState([])
-
-  const getRandomIndex = () => {
-    return Math.floor(Math.random() * cleanWords.length);
-  };
+  const [includeCleanWords, setIncludeCleanWords] = useState(true);
+  const [includeDirtyWords, setIncludeDirtyWords] = useState(false);
 
   const handleCheck = (e) => {
     setStartWith(e.target.checked)
