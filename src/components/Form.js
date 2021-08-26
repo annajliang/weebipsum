@@ -59,6 +59,7 @@ const Form = ({ setResults, setUserResult }) => {
     }
 
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
+    return startWith ? `Omae wa mou shindeiru ${paragraph}` : paragraph;
   };
 
   return (
