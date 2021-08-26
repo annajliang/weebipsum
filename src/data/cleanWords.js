@@ -85,7 +85,7 @@ const cleanWords = [
   "watashi",
   "pocky",
   "ramune",
-  "i-it's not like I like you or anything b-baka",
+  "it's not like I like you or anything b-baka",
   "Death Note",
   "mangaka",
   "dandere",
