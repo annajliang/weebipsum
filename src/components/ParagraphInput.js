@@ -3,7 +3,6 @@ import React from "react";
 const ParagraphInput = ({
   idName,
   textContent,
-  getInputData,
   setParagraphType,
   numOfSentencesInParagraph,
 }) => {
@@ -14,9 +13,7 @@ const ParagraphInput = ({
         id={idName}
         name="paragraphType"
         value={numOfSentencesInParagraph}
-        onClick={(e) => {
-          getInputData(e, setParagraphType);
-        }}
+        onClick={(e) => setParagraphType(e.target.value)}
         required
       />
       <label htmlFor={idName}>{textContent}</label>

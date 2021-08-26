@@ -16,10 +16,6 @@ const Form = ({ setUserResult }) => {
   const [includeCleanWords, setIncludeCleanWords] = useState(true);
   const [includeDirtyWords, setIncludeDirtyWords] = useState(false);
 
-  const handleCheck = (e) => {
-    setStartWith(e.target.checked);
-  };
-
   const constructSentence = (arr) => {
     let sentence = "";
 
@@ -39,10 +35,6 @@ const Form = ({ setUserResult }) => {
       : setUserResult(
           constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords))
         );
-  };
-
-  const getInputData = (e, setStateName) => {
-    setStateName(e.target.value);
   };
 
   const constructSingleParagraph = (paraSize, arr) => {
@@ -71,29 +63,24 @@ const Form = ({ setUserResult }) => {
         min="1"
         max="20"
         value={numOfParagraphs}
-        onChange={(e) => {
-          getInputData(e, setNumOfParagraphs);
-        }}
+        onChange={(e) => setNumOfParagraphs(e.target.value)}
       />
       <label htmlFor="numOfParagraphs"> Paragraphs</label>
       <br></br>
 
       <ParagraphInput
-        getInputData={getInputData}
         setParagraphType={setParagraphType}
         numOfSentencesInParagraph="7"
         idName="longParagraph"
         textContent="Long"
       />
       <ParagraphInput
-        getInputData={getInputData}
         setParagraphType={setParagraphType}
         numOfSentencesInParagraph="5"
         idName="medParagraph"
         textContent="Medium"
       />
       <ParagraphInput
-        getInputData={getInputData}
         setParagraphType={setParagraphType}
         numOfSentencesInParagraph="3"
         idName="smallParagraph"
@@ -118,7 +105,7 @@ const Form = ({ setUserResult }) => {
         type="checkbox"
         id="startWith"
         name="startWith"
-        onChange={handleCheck}
+        onChange={(e) => setStartWith(e.target.checked)}
       />
       <label htmlFor="startWith">Start with 'Omae wa mou shindeiru...</label>
       <br></br>
