@@ -5,7 +5,7 @@ const ParagraphInput = ({
   textContent,
   getInputData,
   setParagraphType,
-  numOfSentencesInParagraph
+  numOfSentencesInParagraph,
 }) => {
   return (
     <>

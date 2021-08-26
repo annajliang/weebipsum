@@ -4,7 +4,7 @@ const WordChoice = ({
   idName,
   setIncludeCleanWords,
   setIncludeDirtyWords,
-  textContent
+  textContent,
 }) => {
   return (
     <>

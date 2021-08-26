@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import ParagraphInput from "./ParagraphInput";
 import WordChoice from "./WordChoice";
-import cleanWords from "../data/cleanWords"
+import cleanWords from "../data/cleanWords";
 import dirtyWords from "../data/dirtyWords";
-import { getRandomIndex } from "../utils/randomizer"
-import { applySentenceCase, capitalizeFirstLetter } from "../utils/stringFormatters"
-
+import { getRandomIndex } from "../utils/randomizer";
+import {
+  applySentenceCase,
+  capitalizeFirstLetter,
+} from "../utils/stringFormatters";
 
 const Form = ({ setUserResult }) => {
   const [numOfParagraphs, setNumOfParagraphs] = useState(0);
@@ -15,40 +17,41 @@ const Form = ({ setUserResult }) => {
   const [includeDirtyWords, setIncludeDirtyWords] = useState(false);
 
   const handleCheck = (e) => {
-    setStartWith(e.target.checked)
-  }
+    setStartWith(e.target.checked);
+  };
 
   const constructSentence = (arr) => {
     let sentence = "";
-    
+
     for (let i = 1; i <= 15; i++) {
       sentence += ` ${arr[getRandomIndex(arr)]}`;
     }
 
     sentence = capitalizeFirstLetter(sentence);
-    return `${sentence}.`
+    return `${sentence}.`;
   };
 
   const showResultOnSubmit = (e) => {
     e.preventDefault();
-    
+
     includeCleanWords && !includeDirtyWords
       ? setUserResult(constructAllParagraphs(numOfParagraphs, cleanWords))
-      : setUserResult(constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords)));
+      : setUserResult(
+          constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords))
+        );
   };
-  
 
   const getInputData = (e, setStateName) => {
     setStateName(e.target.value);
   };
 
-    const constructSingleParagraph = (paraSize, arr) => {
-      let paragraph = "";
-      for (let i = 1; i <= paraSize; i++) {
-        paragraph += constructSentence(arr);
-      }
-      return `${paragraph}\n\n`;
-    };
+  const constructSingleParagraph = (paraSize, arr) => {
+    let paragraph = "";
+    for (let i = 1; i <= paraSize; i++) {
+      paragraph += constructSentence(arr);
+    }
+    return `${paragraph}\n\n`;
+  };
 
   const constructAllParagraphs = (length, arr) => {
     let paragraph = "";
