@@ -7,7 +7,7 @@ import { getRandomIndex } from "../utils/randomizer"
 import { applySentenceCase, capitalizeFirstLetter } from "../utils/stringFormatters"
 
 
-const Form = ({ setResults, setUserResult }) => {
+const Form = ({ setUserResult }) => {
   const [numOfParagraphs, setNumOfParagraphs] = useState(0);
   const [paragraphType, setParagraphType] = useState("");
   const [startWith, setStartWith] = useState(false);
@@ -31,10 +31,6 @@ const Form = ({ setResults, setUserResult }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setResults({
-      paragraphLength: numOfParagraphs,
-      paragraphSize: paragraphType,
-    });
 
     setUserResult(constructAllParagraphs(numOfParagraphs));
   };
