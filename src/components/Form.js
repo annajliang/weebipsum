@@ -29,10 +29,12 @@ const Form = ({ setUserResult }) => {
     return `${sentence}.`
   };
 
-  const handleSubmit = (e) => {
+  const showResultOnSubmit = (e) => {
     e.preventDefault();
-
-    setUserResult(constructAllParagraphs(numOfParagraphs));
+    
+    includeCleanWords && !includeDirtyWords
+      ? setUserResult(constructAllParagraphs(numOfParagraphs, cleanWords))
+      : setUserResult(constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords)));
   };
   
 
@@ -59,7 +61,7 @@ const Form = ({ setUserResult }) => {
   };
 
   return (
-    <form action="submit" onSubmit={handleSubmit}>
+    <form action="submit" onSubmit={showResultOnSubmit}>
       <input
         type="number"
         id="numOfParagraphs"
