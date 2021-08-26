@@ -115,8 +115,13 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
         textContent="Sprinkle in some naughty words!"
       />
 
-      <input type="checkbox" id="startWith" name="startWith" onChange={handleCheck} />
-      <label for="shortText">Start with 'Omae wa mou shindeiru...</label>
+      <input
+        type="checkbox"
+        id="startWith"
+        name="startWith"
+        onChange={handleCheck}
+      />
+      <label htmlFor="startWith">Start with 'Omae wa mou shindeiru...</label>
       <br></br>
 
       <input type="submit" value="いきましょう! (Let's Go!)" />
