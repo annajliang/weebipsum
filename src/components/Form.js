@@ -44,19 +44,20 @@ const Form = ({ setResults, setUserResult }) => {
     setStateName(e.target.value);
   };
 
-    const constructSingleParagraph = (paraSize) => {
+    const constructSingleParagraph = (paraSize, arr) => {
       let paragraph = "";
       for (let i = 1; i <= paraSize; i++) {
-        paragraph += constructSentence(cleanWords);
+        paragraph += constructSentence(arr);
       }
       return `${paragraph}\n\n`;
     };
 
-  const constructAllParagraphs = (length) => {
+  const constructAllParagraphs = (length, arr) => {
     let paragraph = "";
     for (let i = 1; i <= length; i++) {
-      paragraph += constructSingleParagraph(paragraphType);
+      paragraph += constructSingleParagraph(paragraphType, arr);
     }
+
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
   };
 
