@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ParagraphInput from "./ParagraphInput";
 import cleanWords from "../data/cleanWords"
+import { getRandomIndex } from "../utils/randomizer"
+import { applySentenceCase, capitalizeFirstLetter } from "../utils/stringFormatters"
 
 const Form = ({ results, setResults, userResult, setUserResult }) => {
   //   const [randomIndex, setRandomIndex] = useState(null);
