@@ -6,9 +6,8 @@ import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer"
 import { applySentenceCase, capitalizeFirstLetter } from "../utils/stringFormatters"
 
-const Form = ({ results, setResults, userResult, setUserResult }) => {
-  //   const [randomIndex, setRandomIndex] = useState(null);
-  //   const [randomWord, setRandomWord] = useState("");
+
+const Form = ({ setResults, setUserResult }) => {
   const [numOfParagraphs, setNumOfParagraphs] = useState(0);
   const [paragraphType, setParagraphType] = useState("");
   const [startWith, setStartWith] = useState(false);
@@ -61,10 +60,6 @@ const Form = ({ results, setResults, userResult, setUserResult }) => {
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
   };
 
-  console.log("check", startWith);
-  console.log('test',test);
-  console.log(results);
-  console.log("paragraph", userResult);
   return (
     <form action="submit" onSubmit={handleSubmit}>
       <input

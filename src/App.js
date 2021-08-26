@@ -5,7 +5,6 @@ import Form from './components/Form'
 function App() {
   const [userResult, setUserResult] = useState('test')
   const [results, setResults] = useState({paragraphLength: 0, paragraphSize: 0})
-  const [sentence, setSentence] = useState("");
 
   return (
     <div className="App">
