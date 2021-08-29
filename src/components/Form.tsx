@@ -19,7 +19,7 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
   const [includeCleanWords, setIncludeCleanWords] = useState<boolean>(true);
   const [includeDirtyWords, setIncludeDirtyWords] = useState<boolean>(false);
 
-  const constructSentence = (arr: string[]) => {
+  const constructSentence = (arr: string[]): string => {
     let sentence = "";
 
     for (let i = 1; i <= 15; i++) {
@@ -30,7 +30,7 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
     return `${sentence}.`;
   };
 
-  const showResultOnSubmit = (e: React.FormEvent) => {
+  const showResultOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     const resultForCleanWords = removeExtraPunctuations(
@@ -45,7 +45,7 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
       : setUserResult(resultForCleanAndDirtyWords);
   };
 
-  const constructSingleParagraph = (paraSize: number | string, arr: string[]) => {
+  const constructSingleParagraph = (paraSize: number | string, arr: string[]): string => {
     let paragraph = "";
     for (let i = 1; i <= paraSize; i++) {
       paragraph += constructSentence(arr);
@@ -53,7 +53,7 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
     return `${paragraph}\n\n`;
   };
 
-  const constructAllParagraphs = (length: number | string, arr: string[]) => {
+  const constructAllParagraphs = (length: number | string, arr: string[]): string => {
     let paragraph = "";
     for (let i = 1; i <= length; i++) {
       paragraph += constructSingleParagraph(paragraphType, arr);
