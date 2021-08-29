@@ -7,3 +7,8 @@ export const applySentenceCase = (str) => {
 export const capitalizeFirstLetter = (string) => {
   return string.trim().charAt(0).toUpperCase() + string.slice(2);
 };
+
+export const removeExtraPunctuations = (str) => {
+  const regex = /\,\.|\!\.|\;\./g;
+  return str.replace(regex, ".");
+}
