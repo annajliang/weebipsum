@@ -7,6 +7,7 @@ import { getRandomIndex } from "../utils/randomizer";
 import {
   applySentenceCase,
   capitalizeFirstLetter,
+  removeExtraPunctuations,
 } from "../utils/stringFormatters";
 
 const Form = ({ setUserResult }) => {
@@ -30,11 +31,12 @@ const Form = ({ setUserResult }) => {
   const showResultOnSubmit = (e) => {
     e.preventDefault();
 
+    const resultForCleanWords = removeExtraPunctuations(constructAllParagraphs(numOfParagraphs, cleanWords))
+    const resultForCleanAndDirtyWords = removeExtraPunctuations(constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords)))
+
     includeCleanWords && !includeDirtyWords
-      ? setUserResult(constructAllParagraphs(numOfParagraphs, cleanWords))
-      : setUserResult(
-          constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords))
-        );
+      ? setUserResult(resultForCleanWords)
+      : setUserResult(resultForCleanAndDirtyWords);
   };
 
   const constructSingleParagraph = (paraSize, arr) => {
