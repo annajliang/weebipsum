@@ -10,14 +10,16 @@ import {
   removeExtraPunctuations,
 } from "../utils/stringFormatters";
 
-const Form = ({ setUserResult }) => {
-  const [numOfParagraphs, setNumOfParagraphs] = useState(0);
-  const [paragraphType, setParagraphType] = useState("");
-  const [startWith, setStartWith] = useState(false);
-  const [includeCleanWords, setIncludeCleanWords] = useState(true);
-  const [includeDirtyWords, setIncludeDirtyWords] = useState(false);
+const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string>> }> = ({
+  setUserResult,
+}) => {
+  const [numOfParagraphs, setNumOfParagraphs] = useState<number | string>(0);
+  const [paragraphType, setParagraphType] = useState<string>("");
+  const [startWith, setStartWith] = useState<boolean>(false);
+  const [includeCleanWords, setIncludeCleanWords] = useState<boolean>(true);
+  const [includeDirtyWords, setIncludeDirtyWords] = useState<boolean>(false);
 
-  const constructSentence = (arr) => {
+  const constructSentence = (arr: string[]) => {
     let sentence = "";
 
     for (let i = 1; i <= 15; i++) {
@@ -28,18 +30,22 @@ const Form = ({ setUserResult }) => {
     return `${sentence}.`;
   };
 
-  const showResultOnSubmit = (e) => {
+  const showResultOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const resultForCleanWords = removeExtraPunctuations(constructAllParagraphs(numOfParagraphs, cleanWords))
-    const resultForCleanAndDirtyWords = removeExtraPunctuations(constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords)))
+    const resultForCleanWords = removeExtraPunctuations(
+      constructAllParagraphs(numOfParagraphs, cleanWords)
+    );
+    const resultForCleanAndDirtyWords = removeExtraPunctuations(
+      constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords))
+    );
 
     includeCleanWords && !includeDirtyWords
       ? setUserResult(resultForCleanWords)
       : setUserResult(resultForCleanAndDirtyWords);
   };
 
-  const constructSingleParagraph = (paraSize, arr) => {
+  const constructSingleParagraph = (paraSize: number | string, arr: string[]) => {
     let paragraph = "";
     for (let i = 1; i <= paraSize; i++) {
       paragraph += constructSentence(arr);
@@ -47,7 +53,7 @@ const Form = ({ setUserResult }) => {
     return `${paragraph}\n\n`;
   };
 
-  const constructAllParagraphs = (length, arr) => {
+  const constructAllParagraphs = (length: number | string, arr: string[]) => {
     let paragraph = "";
     for (let i = 1; i <= length; i++) {
       paragraph += constructSingleParagraph(paragraphType, arr);

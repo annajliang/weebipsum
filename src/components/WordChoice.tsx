@@ -1,11 +1,13 @@
 import React from "react";
 
-const WordChoice = ({
-  idName,
-  setIncludeCleanWords,
-  setIncludeDirtyWords,
-  textContent,
-}) => {
+interface Props {
+  idName: string,
+  setIncludeCleanWords: (bool: boolean) => void,
+  setIncludeDirtyWords: (bool: boolean) => void,
+  textContent: string,
+}
+
+const WordChoice: React.FC<Props> = ({idName, setIncludeCleanWords, setIncludeDirtyWords, textContent}) => {
   return (
     <>
       <input
