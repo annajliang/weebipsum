@@ -3,15 +3,15 @@ import React from "react";
 interface Props {
   idName: string;
   textContent: string;
-  setParagraphType: (text: string) => void;
-  numOfSentencesInParagraph: string,
+  numOfSentencesInParagraph: string;
+  handleClick: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 
 const ParagraphInput: React.FC<Props> = ({
   idName,
   textContent,
-  setParagraphType,
   numOfSentencesInParagraph,
+  handleClick,
 }) => {
   return (
     <>
@@ -20,7 +20,7 @@ const ParagraphInput: React.FC<Props> = ({
         id={idName}
         name="paragraphType"
         value={numOfSentencesInParagraph}
-        onClick={(e) => setParagraphType(e.currentTarget.value)}
+        onClick={handleClick}
         required
       />
       <label htmlFor={idName}>{textContent}</label>

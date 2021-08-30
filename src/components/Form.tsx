@@ -9,15 +9,13 @@ import {
   capitalizeFirstLetter,
   removeExtraPunctuations,
 } from "../utils/stringFormatters";
+import { UserChoices as Props } from "../App";
 
-const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string>> }> = ({
-  setUserResult,
-}) => {
-  const [numOfParagraphs, setNumOfParagraphs] = useState<number | string>(0);
-  const [paragraphType, setParagraphType] = useState<string>("");
-  const [startWith, setStartWith] = useState<boolean>(false);
-  const [includeCleanWords, setIncludeCleanWords] = useState<boolean>(true);
-  const [includeDirtyWords, setIncludeDirtyWords] = useState<boolean>(false);
+const Form: React.FC<{
+  userInputs: Props;
+  setShow: React.Dispatch<React.SetStateAction<string>>;
+  setUserInputs: React.Dispatch<React.SetStateAction<Props>>;
+}> = ({ userInputs, setUserInputs, setShow }) => {
 
   const constructSentence = (arr: string[]): string => {
     let sentence = "";
@@ -33,19 +31,25 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
   const showResultOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
-    const resultForCleanWords = removeExtraPunctuations(
-      constructAllParagraphs(numOfParagraphs, cleanWords)
+    const InputsForCleanWords = removeExtraPunctuations(
+      constructAllParagraphs(userInputs.numOfParagraphs, cleanWords)
     );
-    const resultForCleanAndDirtyWords = removeExtraPunctuations(
-      constructAllParagraphs(numOfParagraphs, cleanWords.concat(dirtyWords))
+    const InputsForCleanAndDirtyWords = removeExtraPunctuations(
+      constructAllParagraphs(
+        userInputs.numOfParagraphs,
+        cleanWords.concat(dirtyWords)
+      )
     );
 
-    includeCleanWords && !includeDirtyWords
-      ? setUserResult(resultForCleanWords)
-      : setUserResult(resultForCleanAndDirtyWords);
+    userInputs.cleanWords && !userInputs.dirtyWords
+      ? setShow(InputsForCleanWords)
+      : setShow(InputsForCleanAndDirtyWords);
   };
 
-  const constructSingleParagraph = (paraSize: number | string, arr: string[]): string => {
+  const constructSingleParagraph = (
+    paraSize: number | string,
+    arr: string[]
+  ): string => {
     let paragraph = "";
     for (let i = 1; i <= paraSize; i++) {
       paragraph += constructSentence(arr);
@@ -53,14 +57,58 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
     return `${paragraph}\n\n`;
   };
 
-  const constructAllParagraphs = (length: number | string, arr: string[]): string => {
+  const constructAllParagraphs = (
+    length: number | string,
+    arr: string[]
+  ): string => {
     let paragraph = "";
     for (let i = 1; i <= length; i++) {
-      paragraph += constructSingleParagraph(paragraphType, arr);
+      paragraph += constructSingleParagraph(userInputs.paragraphType, arr);
     }
 
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
-    return startWith ? `Omae wa mou shindeiru ${paragraph}` : paragraph;
+    return userInputs.startWithOmae ? `Omae wa mou shindeiru ${paragraph}` : paragraph;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.id === "numOfParagraphs") {
+     setUserInputs({
+       ...userInputs,
+       [e.target.id]: parseInt(e.target.value),
+     });
+    } 
+    
+    if (e.target.id === "startWithOmae") {
+       setUserInputs({
+         ...userInputs,
+         [e.target.id]: e.target.checked,
+       });
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    setUserInputs({
+      ...userInputs,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
+
+  const handleWordChoice = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>
+  ) => {
+    if (e.currentTarget.id === "cleanWords") {
+      setUserInputs({
+        ...userInputs,
+        [e.currentTarget.id]: true,
+        "dirtyWords": false,
+      })
+    } else {
+      setUserInputs({
+        ...userInputs,
+        "cleanWords": true,
+        [e.currentTarget.id]: true,
+      });
+    }
   };
 
   return (
@@ -70,52 +118,50 @@ const Form: React.FC<{ setUserResult: React.Dispatch<React.SetStateAction<string
         id="numOfParagraphs"
         min="1"
         max="20"
-        value={numOfParagraphs}
-        onChange={(e) => setNumOfParagraphs(e.target.value)}
+        value={userInputs.numOfParagraphs}
+        onChange={handleChange}
       />
       <label htmlFor="numOfParagraphs"> Paragraphs</label>
       <br></br>
 
       <ParagraphInput
-        setParagraphType={setParagraphType}
         numOfSentencesInParagraph="7"
         idName="longParagraph"
         textContent="Long"
+        handleClick={handleClick}
       />
       <ParagraphInput
-        setParagraphType={setParagraphType}
         numOfSentencesInParagraph="5"
         idName="medParagraph"
         textContent="Medium"
+        handleClick={handleClick}
       />
       <ParagraphInput
-        setParagraphType={setParagraphType}
         numOfSentencesInParagraph="3"
         idName="smallParagraph"
         textContent="Small"
+        handleClick={handleClick}
       />
 
       <WordChoice
         idName="cleanWords"
-        setIncludeCleanWords={setIncludeCleanWords}
-        setIncludeDirtyWords={setIncludeDirtyWords}
         textContent="Keep it PG!"
+        handleWordChoice={handleWordChoice}
       />
 
       <WordChoice
         idName="dirtyWords"
-        setIncludeCleanWords={setIncludeCleanWords}
-        setIncludeDirtyWords={setIncludeDirtyWords}
         textContent="Sprinkle in some naughty words!"
+        handleWordChoice={handleWordChoice}
       />
 
       <input
         type="checkbox"
-        id="startWith"
-        name="startWith"
-        onChange={(e) => setStartWith(e.target.checked)}
+        id="startWithOmae"
+        name="startWithOmae"
+        onChange={handleChange}
       />
-      <label htmlFor="startWith">Start with 'Omae wa mou shindeiru...</label>
+      <label htmlFor="startWithOmae">Start with 'Omae wa mou shindeiru...</label>
       <br></br>
 
       <input type="submit" value="いきましょう! (Let's Go!)" />

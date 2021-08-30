@@ -1,13 +1,12 @@
 import React from "react";
 
 interface Props {
-  idName: string,
-  setIncludeCleanWords: (bool: boolean) => void,
-  setIncludeDirtyWords: (bool: boolean) => void,
+  idName: string;
   textContent: string,
+  handleWordChoice: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void,
 }
 
-const WordChoice: React.FC<Props> = ({idName, setIncludeCleanWords, setIncludeDirtyWords, textContent}) => {
+const WordChoice: React.FC<Props> = ({idName, textContent, handleWordChoice}) => {
   return (
     <>
       <input
@@ -15,15 +14,7 @@ const WordChoice: React.FC<Props> = ({idName, setIncludeCleanWords, setIncludeDi
         id={idName}
         name="wordType"
         value={idName}
-        onClick={() => {
-          if (idName === "cleanWords") {
-            setIncludeCleanWords(true);
-            setIncludeDirtyWords(false);
-          } else {
-            setIncludeDirtyWords(true);
-            setIncludeCleanWords(true);
-          }
-        }}
+        onClick={handleWordChoice}
         required
       />
       <label htmlFor={idName}>{textContent}</label>
