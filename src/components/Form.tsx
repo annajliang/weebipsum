@@ -13,9 +13,9 @@ import { UserChoices as Props } from "../App";
 
 const Form: React.FC<{
   userInputs: Props;
-  setShow: React.Dispatch<React.SetStateAction<string>>;
+  setResult: React.Dispatch<React.SetStateAction<string>>;
   setUserInputs: React.Dispatch<React.SetStateAction<Props>>;
-}> = ({ userInputs, setUserInputs, setShow }) => {
+}> = ({ userInputs, setUserInputs, setResult }) => {
 
   const constructSentence = (arr: string[]): string => {
     let sentence = "";
@@ -32,18 +32,18 @@ const Form: React.FC<{
     e.preventDefault();
 
     const InputsForCleanWords = removeExtraPunctuations(
-      constructAllParagraphs(userInputs.numOfParagraphs, cleanWords)
+      constructAllParagraphs(userInputs.numParagraphs, cleanWords)
     );
     const InputsForCleanAndDirtyWords = removeExtraPunctuations(
       constructAllParagraphs(
-        userInputs.numOfParagraphs,
+        userInputs.numParagraphs,
         cleanWords.concat(dirtyWords)
       )
     );
 
     userInputs.cleanWords && !userInputs.dirtyWords
-      ? setShow(InputsForCleanWords)
-      : setShow(InputsForCleanAndDirtyWords);
+      ? setResult(InputsForCleanWords)
+      : setResult(InputsForCleanAndDirtyWords);
   };
 
   const constructSingleParagraph = (
@@ -71,7 +71,7 @@ const Form: React.FC<{
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.id === "numOfParagraphs") {
+    if (e.target.id === "numParagraphs") {
      setUserInputs({
        ...userInputs,
        [e.target.id]: parseInt(e.target.value),
@@ -115,13 +115,13 @@ const Form: React.FC<{
     <form action="submit" onSubmit={showResultOnSubmit}>
       <input
         type="number"
-        id="numOfParagraphs"
+        id="numParagraphs"
         min="1"
         max="20"
-        value={userInputs.numOfParagraphs}
+        value={userInputs.numParagraphs}
         onChange={handleChange}
       />
-      <label htmlFor="numOfParagraphs"> Paragraphs</label>
+      <label htmlFor="numParagraphs"> Paragraphs</label>
       <br></br>
 
       <ParagraphInput

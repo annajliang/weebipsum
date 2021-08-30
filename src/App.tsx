@@ -3,7 +3,7 @@ import { useState } from "react";
 import Form from "./components/Form";
 
 export interface UserChoices {
-  numOfParagraphs: number;
+  numParagraphs: number;
   paragraphType: string;
   cleanWords: boolean;
   dirtyWords: boolean;
@@ -12,14 +12,14 @@ export interface UserChoices {
 
 function App() {
   const [userInputs, setUserInputs] = useState({
-    numOfParagraphs: 0,
+    numParagraphs: 0,
     paragraphType: "",
     cleanWords: true,
     dirtyWords: false,
     startWithOmae: false,
   });
 
-  const [show, setShow] = useState<string>('Result')
+  const [result, setResult] = useState<string>('Result')
 
   return (
     <div className="App">
@@ -27,10 +27,10 @@ function App() {
       <Form
         userInputs={userInputs}
         setUserInputs={setUserInputs}
-        setShow={setShow}
+        setResult={setResult}
       />
       <div className="new-line">
-        <p>{show}</p>
+        <p>{result}</p>
       </div>
     </div>
   );
