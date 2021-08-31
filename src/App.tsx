@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Form from "./components/Form";
 import title from "./assets/weebipsum-h1.svg";
+import animeGirl from "./assets/animeGirl-resize.png";
 import { Wrapper } from "./utils/styles";
 import Result from "./components/Result";
 
@@ -89,7 +90,7 @@ function App() {
       <Wrapper>
         <header>
           <h1>
-            <img src={title} alt="Weebipsum"></img>
+            <img src={title} alt="Weebipsum" />
           </h1>
         </header>
         <Main className="new-line">

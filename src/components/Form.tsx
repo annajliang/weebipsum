@@ -90,7 +90,9 @@ const Form: React.FC<{
     }
 
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
-    return userInputs.startWithOmae ? `Omae wa mou shindeiru ${paragraph}` : paragraph;
+    return userInputs.startWithOmae
+      ? `Omae wa mou shindeiru ${paragraph[0].toLowerCase()}${paragraph.slice(1)} `
+      : paragraph;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
