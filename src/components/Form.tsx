@@ -1,6 +1,6 @@
 import React from "react";
-import ParagraphInput from "./ParagraphInput";
-import WordChoice from "./WordChoice";
+import ParaTypeInput from "./ParaTypeInput";
+import WordChoiceInput from "./WordChoiceInput";
 import cleanWords from "../data/cleanWords";
 import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer";
@@ -151,19 +151,19 @@ const Form: React.FC<{
           />
           <label htmlFor="numParagraphs"> Paragraphs</label>
 
-          <ParagraphInput
+          <ParaTypeInput
             numOfSentencesInParagraph="7"
             idName="longParagraph"
             textContent="Long"
             handleClick={handleClick}
           />
-          <ParagraphInput
+          <ParaTypeInput
             numOfSentencesInParagraph="5"
             idName="medParagraph"
             textContent="Medium"
             handleClick={handleClick}
           />
-          <ParagraphInput
+          <ParaTypeInput
             numOfSentencesInParagraph="3"
             idName="smallParagraph"
             textContent="Small"
@@ -175,13 +175,13 @@ const Form: React.FC<{
       <Section>
         <h3>Select Choice of Words</h3>
         <InputContainer>
-          <WordChoice
+          <WordChoiceInput
             idName="cleanWords"
             textContent="Keep it PG!"
             handleWordChoice={handleWordChoice}
           />
 
-          <WordChoice
+          <WordChoiceInput
             idName="dirtyWords"
             textContent="Sprinkle in some naughty words!"
             handleWordChoice={handleWordChoice}

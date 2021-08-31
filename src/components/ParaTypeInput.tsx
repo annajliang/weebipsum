@@ -7,7 +7,7 @@ interface Props {
   handleClick: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 
-const ParagraphInput: React.FC<Props> = ({
+const ParaTypeInput: React.FC<Props> = ({
   idName,
   textContent,
   numOfSentencesInParagraph,
@@ -28,4 +28,4 @@ const ParagraphInput: React.FC<Props> = ({
   );
 };
 
-export default ParagraphInput;
+export default ParaTypeInput;
