@@ -11,6 +11,7 @@ import {
 } from "../utils/stringFormatters";
 import styled from "styled-components";
 import { UserChoices as Props } from "../App";
+import { Btn } from "../utils/styles";
 
 const Section = styled.section`
   margin: 3.5rem 0;
@@ -28,18 +29,9 @@ const InputContainer = styled.div`
   }
 `;
 
-export const SubmitBtn = styled.button`
-  display: block;
-  margin: 2rem auto 0;
-  background-color: #f26663;
-  font: 600 2.5rem "Action Man" !important;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  position: relative;
-  z-index: 1;
+const GenerateBtn = styled(Btn)`
   color: #fff;
-  box-shadow: 0px 8px 0px 0px #DE2828;
+  box-shadow: 0px 8px 0px 0px #de2828;
 `;
 
 const Form: React.FC<{
@@ -209,7 +201,7 @@ const Form: React.FC<{
           </label>
         </InputContainer>
 
-        <SubmitBtn>Generate</SubmitBtn>
+        <GenerateBtn generate>Generate</GenerateBtn>
       </Section>
     </form>
   );

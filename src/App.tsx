@@ -3,8 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Form from "./components/Form";
 import title from "./assets/weebipsum-h1.svg";
-import animeGirl from "./assets/animeGirl.png";
-import { Wrapper } from "./utils/wrapper";
+import { Wrapper } from "./utils/styles";
 import Result from "./components/Result";
 
 const Main = styled.main`
