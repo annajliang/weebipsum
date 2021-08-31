@@ -9,7 +9,65 @@ import {
   capitalizeFirstLetter,
   removeExtraPunctuations,
 } from "../utils/stringFormatters";
+import styled from "styled-components";
 import { UserChoices as Props } from "../App";
+
+const Section = styled.section`
+  margin: 3.5rem 0;
+`
+
+const InputContainer = styled.div`
+  display: inline;
+
+  & input {
+    margin-right: .5rem;
+  }
+
+  & label:not(:last-child) {
+    padding-right: 2rem;
+  }
+`;
+
+export const SubmitBtn = styled.button`
+  display: block;
+  margin: 2rem auto 0;
+  /* background-color: transparent; */
+  background-color: #f26663;
+  font: 600 2.5rem "Action Man" !important;
+  /* border: 2px solid #31302c; */
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  position: relative;
+  z-index: 1;
+  /* box-shadow: 5px 5px #31302c; */
+  /* border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; */
+  color: #fff;
+  box-shadow: 0px 8px 0px 0px #DE2828;
+
+  /* &:after {
+    content: "";
+    display: block;
+    height: 0.9rem;
+    width: 100%;
+    background-image: repeating-linear-gradient(
+      45deg,
+      #31302c,
+      #31302c 1px,
+      transparent 2px,
+      transparent 6px
+    );
+    border: 2px solid #31302c;
+    position: absolute;
+    left: -2px;
+    bottom: -13px;
+    z-index: -1;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  } */
+`;
 
 const Form: React.FC<{
   userInputs: Props;
@@ -113,58 +171,73 @@ const Form: React.FC<{
 
   return (
     <form action="submit" onSubmit={showResultOnSubmit}>
-      <input
-        type="number"
-        id="numParagraphs"
-        min="1"
-        max="20"
-        value={userInputs.numParagraphs}
-        onChange={handleChange}
-      />
-      <label htmlFor="numParagraphs"> Paragraphs</label>
-      <br></br>
+      <Section>
+        <h3>Select Paragraph Length and Type</h3>
+        <InputContainer>
+          <input
+            type="number"
+            id="numParagraphs"
+            min="1"
+            max="20"
+            value={userInputs.numParagraphs}
+            onChange={handleChange}
+          />
+          <label htmlFor="numParagraphs"> Paragraphs</label>
 
-      <ParagraphInput
-        numOfSentencesInParagraph="7"
-        idName="longParagraph"
-        textContent="Long"
-        handleClick={handleClick}
-      />
-      <ParagraphInput
-        numOfSentencesInParagraph="5"
-        idName="medParagraph"
-        textContent="Medium"
-        handleClick={handleClick}
-      />
-      <ParagraphInput
-        numOfSentencesInParagraph="3"
-        idName="smallParagraph"
-        textContent="Small"
-        handleClick={handleClick}
-      />
+          <ParagraphInput
+            numOfSentencesInParagraph="7"
+            idName="longParagraph"
+            textContent="Long"
+            handleClick={handleClick}
+          />
+          <ParagraphInput
+            numOfSentencesInParagraph="5"
+            idName="medParagraph"
+            textContent="Medium"
+            handleClick={handleClick}
+          />
+          <ParagraphInput
+            numOfSentencesInParagraph="3"
+            idName="smallParagraph"
+            textContent="Small"
+            handleClick={handleClick}
+          />
+        </InputContainer>
+      </Section>
 
-      <WordChoice
-        idName="cleanWords"
-        textContent="Keep it PG!"
-        handleWordChoice={handleWordChoice}
-      />
+      <Section>
+        <h3>Select Choice of Words</h3>
+        <InputContainer>
+          <WordChoice
+            idName="cleanWords"
+            textContent="Keep it PG!"
+            handleWordChoice={handleWordChoice}
+          />
 
-      <WordChoice
-        idName="dirtyWords"
-        textContent="Sprinkle in some naughty words!"
-        handleWordChoice={handleWordChoice}
-      />
+          <WordChoice
+            idName="dirtyWords"
+            textContent="Sprinkle in some naughty words!"
+            handleWordChoice={handleWordChoice}
+          />
+        </InputContainer>
+      </Section>
 
-      <input
-        type="checkbox"
-        id="startWithOmae"
-        name="startWithOmae"
-        onChange={handleChange}
-      />
-      <label htmlFor="startWithOmae">Start with 'Omae wa mou shindeiru...</label>
-      <br></br>
+      <Section>
+        <h3>A Little Something Extra</h3>
+        <InputContainer>
+          <input
+            type="checkbox"
+            id="startWithOmae"
+            name="startWithOmae"
+            onChange={handleChange}
+          />
+          <label htmlFor="startWithOmae">
+            Start with "Omae wa mou shindeiru..."
+          </label>
+        </InputContainer>
 
-      <input type="submit" value="いきましょう! (Let's Go!)" />
+        <SubmitBtn>Generate</SubmitBtn>
+      </Section>
     </form>
   );
 };
