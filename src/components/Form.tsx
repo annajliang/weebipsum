@@ -1,6 +1,4 @@
 import React from "react";
-import ParaTypeInput from "./ParaTypeInput";
-import WordChoiceInput from "./WordChoiceInput";
 import cleanWords from "../data/cleanWords";
 import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer";
@@ -12,16 +10,19 @@ import {
 import styled from "styled-components";
 import { UserChoices as Props } from "../App";
 import { Btn } from "../utils/styles";
+import ParagraphOptions from "./Sections/ParagraphOptions";
+import WordChoices from "./Sections/WordChoices";
+import OptionalText from "./Sections/OptionalText";
 
-const Section = styled.section`
+export const Section = styled.section`
   margin: 3.5rem 0;
-`
+`;
 
-const InputContainer = styled.div`
+export const InputContainer = styled.div`
   display: inline;
 
   & input {
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
 
   & label:not(:last-child) {
@@ -138,71 +139,17 @@ const Form: React.FC<{
 
   return (
     <form action="submit" onSubmit={showResultOnSubmit}>
-      <Section>
-        <h3>Select Paragraph Length and Type</h3>
-        <InputContainer>
-          <input
-            type="number"
-            id="numParagraphs"
-            min="1"
-            max="20"
-            value={userInputs.numParagraphs}
-            onChange={handleChange}
-          />
-          <label htmlFor="numParagraphs"> Paragraphs</label>
+      <ParagraphOptions
+        userInputs={userInputs}
+        handleClick={handleClick}
+        handleChange={handleChange}
+      />
 
-          <ParaTypeInput
-            numOfSentencesInParagraph="7"
-            idName="longParagraph"
-            textContent="Long"
-            handleClick={handleClick}
-          />
-          <ParaTypeInput
-            numOfSentencesInParagraph="5"
-            idName="medParagraph"
-            textContent="Medium"
-            handleClick={handleClick}
-          />
-          <ParaTypeInput
-            numOfSentencesInParagraph="3"
-            idName="smallParagraph"
-            textContent="Small"
-            handleClick={handleClick}
-          />
-        </InputContainer>
-      </Section>
+      <WordChoices handleWordChoice={handleWordChoice} />
+
+      <OptionalText handleChange={handleChange} />
 
       <Section>
-        <h3>Select Choice of Words</h3>
-        <InputContainer>
-          <WordChoiceInput
-            idName="cleanWords"
-            textContent="Keep it PG!"
-            handleWordChoice={handleWordChoice}
-          />
-
-          <WordChoiceInput
-            idName="dirtyWords"
-            textContent="Sprinkle in some naughty words!"
-            handleWordChoice={handleWordChoice}
-          />
-        </InputContainer>
-      </Section>
-
-      <Section>
-        <h3>A Little Something Extra</h3>
-        <InputContainer>
-          <input
-            type="checkbox"
-            id="startWithOmae"
-            name="startWithOmae"
-            onChange={handleChange}
-          />
-          <label htmlFor="startWithOmae">
-            Start with "Omae wa mou shindeiru..."
-          </label>
-        </InputContainer>
-
         <GenerateBtn generate>Generate</GenerateBtn>
       </Section>
     </form>

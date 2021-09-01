@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Btn } from "../utils/styles";
 
-const ResultContainer = styled.div`
+const ResultContainer = styled.section`
     position: relative;
     margin-bottom: 2rem;
 `
