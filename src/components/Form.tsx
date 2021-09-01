@@ -10,9 +10,9 @@ import {
 import styled from "styled-components";
 import { UserChoices as Props } from "../App";
 import { Btn } from "../utils/styles";
-import ParagraphOptions from "./Sections/ParagraphOptions";
-import WordChoices from "./Sections/WordChoices";
-import OptionalText from "./Sections/OptionalText";
+import ParagraphOptions from "./sections/ParagraphOptions";
+import WordChoices from "./sections/WordChoices";
+import OptionalText from "./sections/OptionalText";
 
 export const Section = styled.section`
   margin: 3.5rem 0;
