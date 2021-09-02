@@ -41,8 +41,8 @@ export const Inputs = styled.div`
 `;
 
 const GenerateBtn = styled(Btn)`
-  color: #fff;
-  box-shadow: 0px 8px 0px 0px #de2828;
+  color: var(--white);
+  box-shadow: 0px 8px 0px 0px var(--red-shadow);
 `;
 
 const Form: React.FC<{

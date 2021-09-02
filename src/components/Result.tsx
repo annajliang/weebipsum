@@ -38,12 +38,12 @@ const CopyBtn = styled(Btn)`
     width: 100%;
     background-image: repeating-linear-gradient(
       45deg,
-      #31302c,
-      #31302c 1px,
+      var(--black),
+      var(--black) 1px,
       transparent 2px,
       transparent 6px
     );
-    border: 2px solid #31302c;
+    border: 2px solid var(--black);
     position: absolute;
     left: -2px;
     bottom: -13px;
@@ -61,8 +61,8 @@ const CopiedNotification = styled.div<{ showCopiedConfirmation: boolean }>`
     visibility: ${(props) =>
       props.showCopiedConfirmation ? "visible" : "hidden"};
     width: 150px;
-    background-color: #337ab7;
-    color: #fff;
+    background-color: var(--light-navy);
+    color: var(--white);
     font-weight: 500;
     border-radius: 6px;
     padding: 7px;
@@ -81,7 +81,7 @@ const CopiedNotification = styled.div<{ showCopiedConfirmation: boolean }>`
       margin-left: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: #337ab7 transparent transparent transparent;
+      border-color: var(--light-navy) transparent transparent transparent;
     }
   }
 `;

@@ -11,8 +11,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 input[type=submit] {
     margin: 0;
-    /* padding: 0; */
-    /* border: 0; */
 }
 `;
 

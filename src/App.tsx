@@ -8,13 +8,13 @@ import { Wrapper } from "./utils/styles";
 import Result from "./components/Result";
 
 const Main = styled.main`
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 50px;
   padding: 4rem 3rem;
   position: relative;
   width: 100%;
   margin: 0 auto;
-  border: 2px solid #31302c;
+  border: 2px solid var(--black);
   border-top: none;
 
   &:after {
@@ -27,15 +27,15 @@ const Main = styled.main`
     bottom: -15px;
     background-image: repeating-linear-gradient(
       45deg,
-      #31302c,
-      #31302c 1px,
+      var(--black),
+      var(--black) 1px,
       transparent 2px,
       transparent 10px
     );
     border-radius: 50px;
-    border: 2px solid #31302c;
+    border: 2px solid var(--black);
     z-index: -1;
-    background-color: white;
+    background-color: var(--white);
   }
 
   @media (max-width: 450px) {
@@ -43,7 +43,7 @@ const Main = styled.main`
   }
 `;
 const Subtitle = styled.div`
-  background-color: #453a94;
+  background-color: var(--dark-navy);
   padding: 1rem;
   border-radius: 50px;
   border-bottom-left-radius: 0;
@@ -55,7 +55,7 @@ const Subtitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #31302c;
+  border: 2px solid var(--black);
 `;
 
 const Hero = styled.div`

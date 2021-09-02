@@ -2,8 +2,21 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
+:root {
+   --dark-navy: #453a94;
+   --white: #fff;
+   --black: #31302c;
+   --beige: #F5F0ED;
+   --red: #f26663;
+   --red-shadow: #de2828;
+   --light-navy: #337ab7;
+
+   --action-man: 'Action Man', 'sans-serif';
+   --jost: 'Jost', sans-serif;
+}
+
 @font-face {
-   font-family: 'Action Man';
+   font-family: var(--action-man);
    src: local('Action Man'), url('../fonts/Action Man Bold.ttf') format('ttf');
 }
 
@@ -12,12 +25,12 @@ html {
 }
 
 body {
-   font-family: 'Jost', sans-serif;
+   font-family: var(--jost);
    line-height: 1.3;
-   background-color: #F5F0ED;
+   background-color: var(--beige);
    background-size: 40px 40px;
    font-size: 1.6rem;
-   color: #31302c;
+   color: var(--black);
 }
 
 h1 img {
@@ -28,16 +41,15 @@ h1 img {
 }
 
 h2 {
-   font-family: 'Action Man';
+   font-family: var(--action-man);
    font-size: 2.5rem;
-   /* font-weight: 600; */
-   color: #fff;
+   color: var(--white);
    position: relative;
    top: 2px;
 }
 
 h3 {
-   font-family: 'Action Man'; 
+   font-family: var(--action-man); 
    font-size: 2.5rem;
    font-weight: 600;
    margin-bottom: .5rem;
