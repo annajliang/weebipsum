@@ -10,9 +10,9 @@ import Result from "./components/Result";
 const Main = styled.main`
   background-color: #fff;
   border-radius: 50px;
-  padding: 4rem;
+  padding: 4rem 3rem;
   position: relative;
-  width: 62rem;
+  width: 100%;
   margin: 0 auto;
   border: 2px solid #31302c;
   border-top: none;
@@ -37,10 +37,14 @@ const Main = styled.main`
     z-index: -1;
     background-color: white;
   }
+
+  @media (max-width: 450px) {
+    padding: 6rem 3rem;
+  }
 `;
 const Subtitle = styled.div`
   background-color: #453a94;
-  height: 5rem;
+  padding: 1rem;
   border-radius: 50px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -58,6 +62,18 @@ const Hero = styled.div`
   & img {
     width: 50rem;
     margin-top: 4rem;
+
+    @media (max-width: 580px) {
+      width: 45rem;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    margin: 0 2rem;
   }
 `;
 
@@ -95,7 +111,9 @@ function App() {
         </header>
         <Main className="new-line">
           <Subtitle>
-            <h2>Add a Dash of Cringe to Your Designs</h2>
+            <h2>
+              Add a Dash of Cringe to <span className="noWrap">Your Designs</span>
+            </h2>
           </Subtitle>
           <Form
             userInputs={userInputs}

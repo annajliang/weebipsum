@@ -1,11 +1,11 @@
 import React from "react";
-import { Section, InputContainer } from "../Form";
+import { Section, Inputs } from "../Form";
 
 const OptionalText: React.FC<{ handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void }> = ({ handleChange }) => {
     return (
       <Section>
         <h3>A Little Something Extra</h3>
-        <InputContainer>
+        <Inputs>
           <input
             type="checkbox"
             id="startWithOmae"
@@ -15,7 +15,7 @@ const OptionalText: React.FC<{ handleChange: (e: React.ChangeEvent<HTMLInputElem
           <label htmlFor="startWithOmae">
             Start with "Omae wa mou shindeiru..."
           </label>
-        </InputContainer>
+        </Inputs>
       </Section>
     );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { InputContainer } from "../Form";
 
 interface Props {
   idName: string;
@@ -8,7 +9,7 @@ interface Props {
 
 const WordChoice: React.FC<Props> = ({idName, textContent, handleWordChoice}) => {
   return (
-    <>
+    <InputContainer>
       <input
         type="radio"
         id={idName}
@@ -18,7 +19,7 @@ const WordChoice: React.FC<Props> = ({idName, textContent, handleWordChoice}) =>
         required
       />
       <label htmlFor={idName}>{textContent}</label>
-    </>
+    </InputContainer>
   );
 };
 

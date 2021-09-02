@@ -1,4 +1,5 @@
 import React from "react";
+import { InputContainer } from "../Form";
 
 interface Props {
   idName: string;
@@ -15,15 +16,17 @@ const ParagraphTypeInput: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <input
-        type="radio"
-        id={idName}
-        name="paragraphType"
-        value={numOfSentencesInParagraph}
-        onClick={handleClick}
-        required
-      />
-      <label htmlFor={idName}>{textContent}</label>
+      <InputContainer>
+        <input
+          type="radio"
+          id={idName}
+          name="paragraphType"
+          value={numOfSentencesInParagraph}
+          onClick={handleClick}
+          required
+        />
+        <label htmlFor={idName}>{textContent}</label>
+      </InputContainer>
     </>
   );
 };

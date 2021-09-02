@@ -13,10 +13,10 @@ html {
 
 body {
    font-family: 'Jost', sans-serif;
-   font-weight: 500;
+   line-height: 1.3;
    background-color: #F5F0ED;
    background-size: 40px 40px;
-   font-size: 1.5rem;
+   font-size: 1.6rem;
    color: #31302c;
 }
 
@@ -43,8 +43,30 @@ h3 {
    margin-bottom: .5rem;
 }
 
-p {
-   line-height: 1.3;
+.noWrap {
+   white-space: nowrap;
+}
+
+@media (max-width: 580px) {
+   h1 img {
+      width: 32rem;
+   }
+
+   h2, h3 {
+      font-size: 2rem;
+   }
+}
+
+@media (max-width: 450px) {
+   h1 img {
+      width: 26rem;
+   }
+}
+
+@media (max-width: 420px) {
+   h2, h3 {
+      font-size: 1.8rem;
+   }
 }
 `;
 

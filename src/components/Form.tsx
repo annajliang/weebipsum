@@ -14,19 +14,29 @@ import ParagraphOptions from "./sections/ParagraphOptions";
 import WordChoices from "./sections/WordChoices";
 import OptionalText from "./sections/OptionalText";
 
-export const Section = styled.section`
+export const Section = styled.div`
   margin: 3.5rem 0;
 `;
 
 export const InputContainer = styled.div`
   display: inline;
 
-  & input {
-    margin-right: 0.5rem;
+  &:not(:last-child) {
+    padding-right: 2rem;
+
+    @media (max-width: 580px) {
+      padding-right: 0;
+    }
   }
 
-  & label:not(:last-child) {
-    padding-right: 2rem;
+  @media (max-width: 580px) {
+    display: block;
+  }
+`;
+
+export const Inputs = styled.div`
+  & input {
+    margin-right: 0.5rem;
   }
 `;
 
@@ -138,21 +148,23 @@ const Form: React.FC<{
   };
 
   return (
-    <form action="submit" onSubmit={showResultOnSubmit}>
-      <ParagraphOptions
-        userInputs={userInputs}
-        handleClick={handleClick}
-        handleChange={handleChange}
-      />
+    <section>
+      <form action="submit" onSubmit={showResultOnSubmit}>
+        <ParagraphOptions
+          userInputs={userInputs}
+          handleClick={handleClick}
+          handleChange={handleChange}
+        />
 
-      <WordChoices handleWordChoice={handleWordChoice} />
+        <WordChoices handleWordChoice={handleWordChoice} />
 
-      <OptionalText handleChange={handleChange} />
+        <OptionalText handleChange={handleChange} />
 
-      <Section>
-        <GenerateBtn generate>Generate</GenerateBtn>
-      </Section>
-    </form>
+        <Section>
+          <GenerateBtn generate>Generate</GenerateBtn>
+        </Section>
+      </form>
+    </section>
   );
 };
 

@@ -13,6 +13,10 @@ const ResultCopy = styled.p`
   padding: 2rem;
   border-radius: 6px;
   text-align: left;
+
+  @media (max-width: 450px) {
+    min-height: 15rem;
+  }
 `;
 
 const CopyBtn = styled(Btn)`

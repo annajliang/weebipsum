@@ -1,7 +1,12 @@
 import React from "react";
-import { Section, InputContainer } from "../Form";
+import { Section, Inputs } from "../Form";
 import ParagraphTypeInput from "../inputs/ParagraphTypeInput";
 import { UserChoices } from "../../App";
+import styled from "styled-components";
+
+const ParagraphLenContainer = styled.div`
+  padding-bottom: 1rem;
+`;
 
 interface Props {
   userInputs: UserChoices,
@@ -12,17 +17,21 @@ interface Props {
 const ParagraphOptions: React.FC<Props> = ({ userInputs, handleClick, handleChange }) => {
     return (
       <Section>
-        <h3>Select Paragraph Length and Type</h3>
-        <InputContainer>
-          <input
-            type="number"
-            id="numParagraphs"
-            min="1"
-            max="20"
-            value={userInputs.numParagraphs}
-            onChange={handleChange}
-          />
-          <label htmlFor="numParagraphs"> Paragraphs</label>
+        <h3>
+          Select Paragraph Length <span className="noWrap">and Type</span>
+        </h3>
+        <Inputs>
+          <ParagraphLenContainer>
+            <input
+              type="number"
+              id="numParagraphs"
+              min="1"
+              max="20"
+              value={userInputs.numParagraphs}
+              onChange={handleChange}
+            />
+            <label htmlFor="numParagraphs"> Paragraphs</label>
+          </ParagraphLenContainer>
 
           <ParagraphTypeInput
             numOfSentencesInParagraph="7"
@@ -42,7 +51,7 @@ const ParagraphOptions: React.FC<Props> = ({ userInputs, handleClick, handleChan
             textContent="Small"
             handleClick={handleClick}
           />
-        </InputContainer>
+        </Inputs>
       </Section>
     );
 }
