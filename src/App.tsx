@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Form from "./components/Form";
 import title from "./assets/weebipsum-h1.svg";
-import animeGirl from "./assets/animeGirl-resize.png";
+import animeGirl from "./assets/test-resize.png";
 import { Wrapper } from "./utils/styles";
 import Result from "./components/Result";
 
@@ -36,6 +36,14 @@ const Main = styled.main`
     border: 2px solid var(--black);
     z-index: -1;
     background-color: var(--white);
+
+    @media (max-width: 580px) {
+      border-radius: 30px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    border-radius: 30px;
   }
 
   @media (max-width: 450px) {
@@ -45,9 +53,7 @@ const Main = styled.main`
 const Subtitle = styled.div`
   background-color: var(--dark-navy);
   padding: 1rem;
-  border-radius: 50px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 50px 50px 0 0;
   position: absolute;
   top: 0;
   right: -2px;
@@ -56,24 +62,28 @@ const Subtitle = styled.div`
   align-items: center;
   justify-content: center;
   border: 2px solid var(--black);
+
+  @media (max-width: 580px) {
+    border-radius: 30px 30px 0 0;
+  }
 `;
 
 const Hero = styled.div`
+  margin-top: 4rem;
   & img {
-    width: 50rem;
-    margin-top: 4rem;
+    width: 60rem;
 
-    @media (max-width: 580px) {
-      width: 45rem;
-    }
-
-    @media (max-width: 480px) {
+    @media (max-width: 700px) {
       width: 100%;
     }
   }
 
+  @media (max-width: 700px) {
+    margin: 4rem 2rem 0 2rem;
+  }
+
   @media (max-width: 480px) {
-    margin: 0 2rem;
+    border-radius: 30px;
   }
 `;
 
