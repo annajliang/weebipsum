@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import ParagraphInput from "./ParagraphInput";
-import WordChoice from "./WordChoice";
+import React from "react";
 import cleanWords from "../data/cleanWords";
 import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer";
@@ -9,7 +7,43 @@ import {
   capitalizeFirstLetter,
   removeExtraPunctuations,
 } from "../utils/stringFormatters";
+import styled from "styled-components";
 import { UserChoices as Props } from "../App";
+import { Btn } from "../utils/styles";
+import ParagraphOptions from "./sections/ParagraphOptions";
+import WordChoices from "./sections/WordChoices";
+import OptionalText from "./sections/OptionalText";
+
+export const Section = styled.div`
+  margin: 3.5rem 0;
+`;
+
+export const InputContainer = styled.div`
+  display: inline;
+
+  &:not(:last-child) {
+    padding-right: 2rem;
+
+    @media (max-width: 580px) {
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 580px) {
+    display: block;
+  }
+`;
+
+export const Inputs = styled.div`
+  & input {
+    margin-right: 0.5rem;
+  }
+`;
+
+const GenerateBtn = styled(Btn)`
+  color: #fff;
+  box-shadow: 0px 8px 0px 0px #de2828;
+`;
 
 const Form: React.FC<{
   userInputs: Props;
@@ -67,7 +101,9 @@ const Form: React.FC<{
     }
 
     paragraph = applySentenceCase(paragraph).split(".").join(". ");
-    return userInputs.startWithOmae ? `Omae wa mou shindeiru ${paragraph}` : paragraph;
+    return userInputs.startWithOmae
+      ? `Omae wa mou shindeiru ${paragraph[0].toLowerCase()}${paragraph.slice(1)} `
+      : paragraph;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,60 +148,23 @@ const Form: React.FC<{
   };
 
   return (
-    <form action="submit" onSubmit={showResultOnSubmit}>
-      <input
-        type="number"
-        id="numParagraphs"
-        min="1"
-        max="20"
-        value={userInputs.numParagraphs}
-        onChange={handleChange}
-      />
-      <label htmlFor="numParagraphs"> Paragraphs</label>
-      <br></br>
+    <section>
+      <form action="submit" onSubmit={showResultOnSubmit}>
+        <ParagraphOptions
+          userInputs={userInputs}
+          handleClick={handleClick}
+          handleChange={handleChange}
+        />
 
-      <ParagraphInput
-        numOfSentencesInParagraph="7"
-        idName="longParagraph"
-        textContent="Long"
-        handleClick={handleClick}
-      />
-      <ParagraphInput
-        numOfSentencesInParagraph="5"
-        idName="medParagraph"
-        textContent="Medium"
-        handleClick={handleClick}
-      />
-      <ParagraphInput
-        numOfSentencesInParagraph="3"
-        idName="smallParagraph"
-        textContent="Small"
-        handleClick={handleClick}
-      />
+        <WordChoices handleWordChoice={handleWordChoice} />
 
-      <WordChoice
-        idName="cleanWords"
-        textContent="Keep it PG!"
-        handleWordChoice={handleWordChoice}
-      />
+        <OptionalText handleChange={handleChange} />
 
-      <WordChoice
-        idName="dirtyWords"
-        textContent="Sprinkle in some naughty words!"
-        handleWordChoice={handleWordChoice}
-      />
-
-      <input
-        type="checkbox"
-        id="startWithOmae"
-        name="startWithOmae"
-        onChange={handleChange}
-      />
-      <label htmlFor="startWithOmae">Start with 'Omae wa mou shindeiru...</label>
-      <br></br>
-
-      <input type="submit" value="いきましょう! (Let's Go!)" />
-    </form>
+        <Section>
+          <GenerateBtn generate>Generate</GenerateBtn>
+        </Section>
+      </form>
+    </section>
   );
 };
 
