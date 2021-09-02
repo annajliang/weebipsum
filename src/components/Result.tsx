@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Btn } from "../utils/styles";
 
@@ -21,6 +21,11 @@ const CopyBtn = styled(Btn)`
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 14px);
+
+  &:hover + div #toolTipText {
+    visibility: visible;
+    opacity: 1;
+  }
 
   &:after {
     content: "";
@@ -45,18 +50,63 @@ const CopyBtn = styled(Btn)`
   }
 `;
 
+const CopiedNotification = styled.div<{ showCopiedConfirmation: boolean }>`
+  position: relative;
+
+  & #toolTipText {
+    visibility: ${(props) =>
+      props.showCopiedConfirmation ? "visible" : "hidden"};
+    width: 150px;
+    background-color: #337ab7;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 7px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -36px);
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #337ab7 transparent transparent transparent;
+    }
+  }
+`;
+
 const Result: React.FC<{result: string}> = ({ result }) => {
+    const [isTextCopied, setIsTextCopied] = useState<boolean>(false);
+    const [copyText, setCopyText] = useState<string>("Copy to clipboard");
+
     return (
       <ResultContainer>
         <h3>Your Result Below</h3>
         <ResultCopy>{result}</ResultCopy>
         <CopyBtn
           onClick={() => {
+            setIsTextCopied(true);
+            setCopyText("Copied!");
+
             navigator.clipboard.writeText(result);
           }}
+          onMouseOut={() => {
+            setIsTextCopied(false);
+            setCopyText("Copy to clipboard");
+          }}
         >
-          Click to Copy
+          Copy Text
         </CopyBtn>
+        <CopiedNotification showCopiedConfirmation={isTextCopied}>
+          <p id="toolTipText">{copyText}</p>
+        </CopiedNotification>
       </ResultContainer>
     );
 }
