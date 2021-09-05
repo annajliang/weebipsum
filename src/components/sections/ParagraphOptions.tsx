@@ -1,6 +1,6 @@
 import React from "react";
 import { Section, Inputs } from "../Form";
-import ParagraphTypeInput from "../inputs/ParagraphTypeInput";
+import RadioInput from "../inputs/RadioInput";
 import { UserChoices } from "../../App";
 import styled from "styled-components";
 
@@ -39,19 +39,19 @@ const ParagraphOptions: React.FC<Props> = ({ userInputs, handleClick, handleChan
             <label htmlFor="numParagraphs"> Paragraphs</label>
           </ParagraphLenContainer>
 
-          <ParagraphTypeInput
+          <RadioInput
             numOfSentencesInParagraph="7"
             idName="longParagraph"
             textContent="Long"
             handleClick={handleClick}
           />
-          <ParagraphTypeInput
+          <RadioInput
             numOfSentencesInParagraph="5"
             idName="medParagraph"
             textContent="Medium"
             handleClick={handleClick}
           />
-          <ParagraphTypeInput
+          <RadioInput
             numOfSentencesInParagraph="3"
             idName="smallParagraph"
             textContent="Small"

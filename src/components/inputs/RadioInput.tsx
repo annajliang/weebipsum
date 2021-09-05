@@ -5,8 +5,9 @@ import styled from "styled-components";
 interface Props {
   idName: string;
   textContent: string;
-  numOfSentencesInParagraph: string;
-  handleClick: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  numOfSentencesInParagraph?: string;
+  handleClick?: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  handleWordChoice?: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }
 
 export const CustomLabel = styled.label`
@@ -63,30 +64,46 @@ export const CustomRadio = styled.span`
   }
 `;
 
-const ParagraphTypeInput: React.FC<Props> = ({
+const RadioInput: React.FC<Props> = ({
   idName,
   textContent,
   numOfSentencesInParagraph,
   handleClick,
+  handleWordChoice,
 }) => {
   return (
     <>
       <InputContainer>
-        <CustomLabel htmlFor={idName} className="container">
-          {textContent}
-          <input
-            type="radio"
-            id={idName}
-            name="paragraphType"
-            value={numOfSentencesInParagraph}
-            onClick={handleClick}
-            defaultChecked={textContent === "Long" ? true : false}
-          />
-          <CustomRadio className="radio"></CustomRadio>
-        </CustomLabel>
+        {idName.includes("Paragraph") ? (
+          <CustomLabel htmlFor={idName} className="container">
+            {textContent}
+            <input
+              type="radio"
+              id={idName}
+              name="paragraphType"
+              value={numOfSentencesInParagraph}
+              onClick={handleClick}
+              defaultChecked={textContent === "Long" ? true : false}
+            />
+            <CustomRadio className="radio"></CustomRadio>
+          </CustomLabel>
+        ) : (
+          <CustomLabel htmlFor={idName} className="container">
+            {textContent}
+            <input
+              type="radio"
+              id={idName}
+              name="wordType"
+              value={idName}
+              onClick={handleWordChoice}
+              defaultChecked={idName === "cleanWords" ? true : false}
+            />
+            <CustomRadio className="radio"></CustomRadio>
+          </CustomLabel>
+        )}
       </InputContainer>
     </>
   );
 };
 
-export default ParagraphTypeInput;
+export default RadioInput;

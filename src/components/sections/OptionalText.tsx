@@ -1,6 +1,6 @@
 import React from "react";
 import { Section, Inputs } from "../Form";
-import { CustomLabel } from "../inputs/ParagraphTypeInput";
+import { CustomLabel } from "../inputs/RadioInput";
 import styled from "styled-components";
 
 const CustomCheckmark = styled.span`
