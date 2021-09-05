@@ -1,5 +1,5 @@
 import React from "react";
-import WordChoiceInput from "../inputs/WordChoiceInput";
+import RadioInput from "../inputs/RadioInput";
 import { Section, Inputs } from "../Form";
 
 interface Props {
@@ -11,13 +11,13 @@ const WordChoices: React.FC<Props> = ({ handleWordChoice }) => {
     <Section>
       <h3>Select Choice of Words</h3>
       <Inputs>
-        <WordChoiceInput
+        <RadioInput
           idName="cleanWords"
           textContent="Keep it PG!"
           handleWordChoice={handleWordChoice}
         />
 
-        <WordChoiceInput
+        <RadioInput
           idName="dirtyWords"
           textContent="Sprinkle in some naughty words!"
           handleWordChoice={handleWordChoice}

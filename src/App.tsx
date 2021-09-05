@@ -10,7 +10,7 @@ import Result from "./components/Result";
 const Main = styled.main`
   background-color: var(--white);
   border-radius: 50px;
-  padding: 4rem 3rem;
+  padding: 5rem 3rem 4rem 3rem;
   position: relative;
   width: 100%;
   margin: 0 auto;
@@ -97,8 +97,8 @@ export interface UserChoices {
 
 function App() {
   const [userInputs, setUserInputs] = useState({
-    numParagraphs: 0,
-    paragraphType: "",
+    numParagraphs: 5,
+    paragraphType: "7",
     cleanWords: true,
     dirtyWords: false,
     startWithOmae: false,

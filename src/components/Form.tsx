@@ -25,6 +25,7 @@ export const InputContainer = styled.div`
 
     @media (max-width: 580px) {
       padding-right: 0;
+      padding-bottom: 1rem;
     }
   }
 
