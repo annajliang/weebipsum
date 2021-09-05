@@ -6,6 +6,12 @@ import styled from "styled-components";
 
 const ParagraphLenContainer = styled.div`
   padding-bottom: 1rem;
+
+  & input[type=number] {
+    border-color: #ccc;
+    border-width: 1px;
+    border-style: solid;
+  }
 `;
 
 interface Props {
