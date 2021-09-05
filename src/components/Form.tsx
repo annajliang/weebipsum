@@ -3,7 +3,6 @@ import cleanWords from "../data/cleanWords";
 import dirtyWords from "../data/dirtyWords";
 import { getRandomIndex } from "../utils/randomizer";
 import {
-  applySentenceCase,
   capitalizeFirstLetter,
   removeExtraPunctuations,
 } from "../utils/stringFormatters";
@@ -100,9 +99,9 @@ const Form: React.FC<{
       paragraph += constructSingleParagraph(userInputs.paragraphType, arr);
     }
 
-    paragraph = applySentenceCase(paragraph).split(".").join(". ");
+    paragraph = paragraph.split(".").join(". ");
     return userInputs.startWithOmae
-      ? `Omae wa mou shindeiru ${paragraph[0].toLowerCase()}${paragraph.slice(1)} `
+      ? `Omae wa mou shindeiru. ${paragraph[0]}${paragraph.slice(1)} `
       : paragraph;
   };
 
