@@ -97,8 +97,8 @@ export interface UserChoices {
 
 function App() {
   const [userInputs, setUserInputs] = useState({
-    numParagraphs: 0,
-    paragraphType: "",
+    numParagraphs: 5,
+    paragraphType: "7",
     cleanWords: true,
     dirtyWords: false,
     startWithOmae: false,

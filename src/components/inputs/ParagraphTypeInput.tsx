@@ -80,7 +80,7 @@ const ParagraphTypeInput: React.FC<Props> = ({
             name="paragraphType"
             value={numOfSentencesInParagraph}
             onClick={handleClick}
-            required
+            defaultChecked={textContent === "Long" ? true : false}
           />
           <CustomRadio className="radio"></CustomRadio>
         </CustomLabel>

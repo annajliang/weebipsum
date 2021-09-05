@@ -19,7 +19,7 @@ const WordChoice: React.FC<Props> = ({idName, textContent, handleWordChoice}) =>
           name="wordType"
           value={idName}
           onClick={handleWordChoice}
-          required
+          defaultChecked={idName === "cleanWords" ? true : false}
         />
         <CustomRadio className="radio"></CustomRadio>
       </CustomLabel>
