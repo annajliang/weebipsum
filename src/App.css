@@ -40,3 +40,12 @@
 .new-line {
   white-space: pre-line;
 }
+
+input[type=number] {
+    border-color: #ccc;
+    border-width: 1px;
+    border-style: solid;
+}
+
+
+

@@ -1,5 +1,6 @@
 import React from "react";
 import { InputContainer } from "../Form";
+import { CustomLabel, CustomRadio } from "./ParagraphTypeInput";
 
 interface Props {
   idName: string;
@@ -10,15 +11,18 @@ interface Props {
 const WordChoice: React.FC<Props> = ({idName, textContent, handleWordChoice}) => {
   return (
     <InputContainer>
-      <input
-        type="radio"
-        id={idName}
-        name="wordType"
-        value={idName}
-        onClick={handleWordChoice}
-        required
-      />
-      <label htmlFor={idName}>{textContent}</label>
+      <CustomLabel htmlFor={idName} className="container">
+        {textContent}
+        <input
+          type="radio"
+          id={idName}
+          name="wordType"
+          value={idName}
+          onClick={handleWordChoice}
+          required
+        />
+        <CustomRadio className="radio"></CustomRadio>
+      </CustomLabel>
     </InputContainer>
   );
 };
