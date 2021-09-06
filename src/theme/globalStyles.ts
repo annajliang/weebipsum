@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import ActionManWoff2 from "../fonts/actionman-bold-webfont.woff2"
+import ActionManWoff from "../fonts/actionman-bold-webfont.woff"
 
 const GlobalStyles = createGlobalStyle`
 
@@ -17,12 +19,8 @@ const GlobalStyles = createGlobalStyle`
 
 @font-face {
    font-family: var(--action-man);
-   src: url('/src/assets/fonts/ActionMan-Bold.eot'); /* IE9 Compat Modes */
-   src: url('/src/assets/fonts/ActionMan-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/src/assets/fonts/ActionMan-Bold.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/src/assets/fonts/ActionMan-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/src/assets/fonts/ActionMan-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/src/assets/fonts/ActionMan-Bold.svg#ActionMan-Bold') format('svg'); /* Legacy iOS */
+   src: url(${ActionManWoff2 }) format('woff2'),
+        url(${ActionManWoff}) format('woff');
 }
 
 html {
