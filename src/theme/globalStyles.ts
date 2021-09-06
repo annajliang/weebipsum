@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
 
 @font-face {
    font-family: var(--action-man);
-   src: local('Action Man'), url('../fonts/Action Man Bold.ttf') format('ttf');
+   src: local('Action Man'), url('/public/fonts/Action Man Bold.ttf') format("truetype");
 }
 
 html {
