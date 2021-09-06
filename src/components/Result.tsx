@@ -52,6 +52,10 @@ const CopyBtn = styled(Btn)`
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  @media (max-width: 295px) {
+    width: 116px;
+  }
 `;
 
 const CopiedNotification = styled.div<{ showCopiedConfirmation: boolean }>`

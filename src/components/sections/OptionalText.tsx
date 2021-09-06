@@ -34,7 +34,9 @@ const CustomCheckmark = styled.span`
 const OptionalText: React.FC<{ handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void }> = ({ handleChange }) => {
     return (
       <Section>
-        <h3>A Little Something Extra</h3>
+        <h3>
+          A Little <span className="noWrap">Something Extra</span>
+        </h3>
         <Inputs>
           <CustomLabel htmlFor="startWithOmae" className="container">
             Start with "Omae wa mou shindeiru..."
