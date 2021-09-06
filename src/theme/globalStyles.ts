@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
 }
 
 @font-face {
-   font-family: 'Action Man', 'sans-serif';
+   font-family: var(--action-man);
    src: url('/src/assets/fonts/ActionMan-Bold.eot'); /* IE9 Compat Modes */
    src: url('/src/assets/fonts/ActionMan-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
        url('/src/assets/fonts/ActionMan-Bold.woff2') format('woff2'), /* Super Modern Browsers */
@@ -46,7 +46,7 @@ h1 img {
 }
 
 h2 {
-   font-family: 'Action Man', 'sans-serif';
+   font-family: var(--action-man);
    font-size: 2.5rem;
    color: var(--white);
    position: relative;
@@ -54,7 +54,7 @@ h2 {
 }
 
 h3 {
-   font-family: 'Action Man', 'sans-serif';
+   font-family: var(--action-man); 
    font-size: 2.5rem;
    font-weight: 600;
    margin-bottom: .5rem;
