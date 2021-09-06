@@ -2,8 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import styled from "styled-components";
 import Form from "./components/Form";
-import title from "./assets/weebipsum-h1.svg";
-import animeGirl from "./assets/test-resize.png";
+import title from "./assets/weebipsumH1.svg";
+import animeGirl from "./assets/animeGirl.png";
 import { Wrapper } from "./utils/styles";
 import Result from "./components/Result";
 
