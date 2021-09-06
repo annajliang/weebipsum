@@ -23,7 +23,7 @@ body {
    line-height: 1.3;
    background-color: var(--beige);
    background-size: 40px 40px;
-   font-size: 1.6rem;
+   font-size: 1.7rem;
    color: var(--black);
 }
 

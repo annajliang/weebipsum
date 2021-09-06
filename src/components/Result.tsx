@@ -29,6 +29,7 @@ const CopyBtn = styled(Btn)`
   &:hover + div #toolTipText {
     visibility: visible;
     opacity: 1;
+    font-size: 1.6rem;
   }
 
   &:after {
@@ -53,8 +54,8 @@ const CopyBtn = styled(Btn)`
     border-top-right-radius: 0;
   }
 
-  @media (max-width: 295px) {
-    width: 116px;
+  @media (max-width: 420px) {
+    width: 125px;
   }
 `;
 
