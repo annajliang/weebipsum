@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import ActionManWoff2 from "../fonts/actionman-bold-webfont.woff2"
-import ActionManWoff from "../fonts/actionman-bold-webfont.woff"
 
 const GlobalStyles = createGlobalStyle`
-
 :root {
    --dark-navy: #453a94;
    --white: #fff;
@@ -15,12 +12,6 @@ const GlobalStyles = createGlobalStyle`
 
    --action-man: 'Action Man', 'sans-serif';
    --jost: 'Jost', sans-serif;
-}
-
-@font-face {
-   font-family: var(--action-man);
-   src: url(${ActionManWoff2 }) format('woff2'),
-        url(${ActionManWoff}) format('woff');
 }
 
 html {

@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Normalize from "./theme/normalize";
 import GlobalStyles from "./theme/globalStyles";
+import GlobalFonts from "./fonts/fonts";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <Normalize />
     <GlobalStyles />
+    <GlobalFonts />
     <App />
   </React.StrictMode>,
   document.getElementById("root")
